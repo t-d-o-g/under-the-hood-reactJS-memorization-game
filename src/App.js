@@ -20,7 +20,7 @@ function shuffleArray(arr) {
 
 class App extends Component {
   state = {
-    mountingScheme
+    mountingScheme,
   };
 
   render() {
@@ -36,7 +36,7 @@ class App extends Component {
         <Wrapper>
           {shuffledSchemes.map(scheme => {
             return <SchemeCard
-              key={scheme.id}
+              key={scheme.name}
               id={scheme.id}
               name={scheme.name}
               image={scheme.image}
