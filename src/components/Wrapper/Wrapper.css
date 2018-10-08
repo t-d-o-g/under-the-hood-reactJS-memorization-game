@@ -1,5 +1,6 @@
 .wrapper {
   height: 100%;
+  border-radius: 5px;
   /* display: flex; */
   /* flex-flow: row wrap; */
   /* padding: 20px;

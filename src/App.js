@@ -43,6 +43,7 @@ class App extends Component {
             />
           })}
         </Wrapper>
+        <footer className="navbar-fixed-bottom">2018</footer>
       </div>
     );
   }
