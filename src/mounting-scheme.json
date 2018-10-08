@@ -1,0 +1,42 @@
+[
+  {
+    "id": 0,
+    "name": "part-0-C",
+    "image": "https://rawgit.com/Bogdan-Lyashenko/Under-the-hood-ReactJS/master/stack/images/0/part-0-C.svg"
+  },
+  {
+    "id": 1,
+    "name": "part-1-C",
+    "image": "https://rawgit.com/Bogdan-Lyashenko/Under-the-hood-ReactJS/master/stack/images/1/part-1-C.svg"
+  },
+  {
+    "id": 2,
+    "name": "part-2-C",
+    "image": "https://rawgit.com/Bogdan-Lyashenko/Under-the-hood-ReactJS/master/stack/images/2/part-2-C.svg"
+  },
+  {
+    "id": 3,
+    "name": "part-3-C",
+    "image": "https://rawgit.com/Bogdan-Lyashenko/Under-the-hood-ReactJS/master/stack/images/3/part-3-C.svg"
+  },
+  {
+    "id": 4,
+    "name": "part-5-C",
+    "image": "https://rawgit.com/Bogdan-Lyashenko/Under-the-hood-ReactJS/master/stack/images/5/part-5-C.svg"
+  },
+  {
+    "id": 5,
+    "name": "part-4-C",
+    "image": "https://rawgit.com/Bogdan-Lyashenko/Under-the-hood-ReactJS/master/stack/images/4/part-4-C.svg"
+  },
+  {
+    "id": 6,
+    "name": "part-6-C",
+    "image": "https://rawgit.com/Bogdan-Lyashenko/Under-the-hood-ReactJS/master/stack/images/6/part-6-C.svg"
+  },
+  {
+    "id": 7,
+    "name": "part-7-C",
+    "image": "https://rawgit.com/Bogdan-Lyashenko/Under-the-hood-ReactJS/master/stack/images/7/part-7-C.svg"
+  }
+]
