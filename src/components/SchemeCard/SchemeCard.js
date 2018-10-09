@@ -4,9 +4,7 @@ import './SchemeCard.css';
 
 class SchemeCard extends Component {
   dragStart = (evt, id) => {
-    console.log('dragstart:', id);
-    // const dragImage = document.createElement('div');
-    // evt.dataTransfer.setDragImage(dragImage, 20, 20);
+    console.log('drag:', id);
     evt.dataTransfer.setData('id', id);
   }
 
