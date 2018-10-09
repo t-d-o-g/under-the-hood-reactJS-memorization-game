@@ -3,6 +3,7 @@ import SchemeCard from './components/SchemeCard';
 import Wrapper from './components/Wrapper';
 import mountingScheme from './mounting-scheme.json';
 
+
 function shuffleArray(arr) {
   let currentIndex = arr.length, tempVal, randIndex;
 
@@ -20,11 +21,56 @@ function shuffleArray(arr) {
 
 class App extends Component {
   state = {
-    mountingScheme,
+    cards: shuffleArray(mountingScheme)
+  };
+
+  handleDragStart = data => evt => {
+    let fromCard = JSON.stringify({ id: data.id });
+    evt.dataTransfer.setData('dragContent', fromCard);
+  }
+
+  handleDragOver = data => evt => {
+    evt.preventDefault();
+
+    return false;
+  }
+ 
+  handleDrop = data => evt => {
+    evt.preventDefault();
+
+    let fromCard = JSON.parse(evt.dataTransfer.getData('dragContent'));
+    let toCard = { id: data.id };
+
+    this.swapCards(fromCard, toCard);
+    return false;
+  }
+
+  swapCards = (fromCard, toCard) => {
+    let cards = this.state.cards.slice();
+    let fromIndex = -1;
+    let toIndex = -1;
+
+    for (let i = 0; i < cards.length; i++) {
+      if (cards[i].id === fromCard.id) {
+        fromIndex = i;
+      }
+      if (cards[i].id === toCard.id) {
+        toIndex = i;
+      }
+    }
+
+    if (fromIndex !== -1 && toIndex !== -1) {
+      let { fromId, ...fromRest } = cards[fromIndex];
+      let { toId, ...toRest } = cards[toIndex];
+      
+      cards[fromIndex] = { id: fromCard.id, ...toRest };
+      cards[toIndex] = { id: toCard.id, ...fromRest };
+
+      this.setState({ cards: cards });
+    }
   };
 
   render() {
-    const shuffledSchemes = shuffleArray(mountingScheme);
     return (
       <div className="App">
         <div className="page-header jumbotron fluid-jumbotron">
@@ -34,12 +80,16 @@ class App extends Component {
           </div>
         </div>
         <Wrapper>
-          {shuffledSchemes.map(scheme => {
+          {this.state.cards.map(card => {
             return <SchemeCard
-              key={scheme.name}
-              id={scheme.id}
-              name={scheme.name}
-              image={scheme.image}
+              key={card.id}
+              id={card.id}
+              name={card.name}
+              image={card.image}
+              draggable={true}
+              onDragStart={this.handleDragStart}
+              onDragOver={this.handleDragOver}
+              onDrop={this.handleDrop}
             />
           })}
         </Wrapper>

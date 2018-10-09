@@ -12,4 +12,5 @@
 
 .card > .img-container > img {
   width: 100%;
+  cursor: move;
 }
