@@ -27,8 +27,8 @@ class Wrapper extends Component {
           <div className="col">{this.props.children[7]}</div>
         </div>
       </div>
-    )
+    );
   }
-};
+}
 
 export default Wrapper;
