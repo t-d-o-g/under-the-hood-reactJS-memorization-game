@@ -5,6 +5,45 @@ import Wrapper from './components/Wrapper';
 import mountingScheme from './mounting-scheme.json';
 
 
+// from http://monkeyraptor.johanpaul.net/2016/09/javascript-check-if-array-elements.html
+function checkOrderedArrElm(a, b) {
+  // --------------------------------------------
+  // a is the array input to be tested.
+  // --------------------------------------------
+  // b is optional.
+  // Undefined b (or other value besides 1) for ascending sequence.
+  // b === 1 for descending sequence test.
+  // --------------------------------------------
+  var m = 0; // counter for loop.
+  var current_num;
+  var next_num;
+  var result = a;
+  var test;
+  if (a !== undefined) {
+      if (a.constructor === Array) { // check if input a is array object.
+          result = true;
+          while (m < a.length) { // loop through array elements.
+              current_num = a[m];
+              next_num = a[m + 1];
+              if (typeof current_num === "number" &&
+                      typeof next_num === "number") {
+                  if (b === 1) {
+                      test = current_num <= next_num; // descending.
+                  } else {
+                      test = current_num >= next_num; // ascending.
+                  }
+                  if (test) { // found unordered/same elements.
+                      result = false;
+                      break;
+                  }
+              }
+              m += 1;
+          }
+      }
+  }
+  return result;
+}
+
 function shuffleArray(arr) {
   let currentIndex = arr.length, tempVal, randIndex;
 
@@ -70,12 +109,23 @@ class App extends Component {
       cards[toIndex] = { id: toCard.id, ...fromRest };
 
       if (fromCard.id === toIndex) {
-        score++;
+        let ids = cards.map(a => a.id);
+        console.log('ids', ids);
+
+        let ascending = ids.filter((a, b, c) => {
+          return Math.max.apply(Math, c.slice(0, b)) > a;
+        })
+
+        if (checkOrderedArrElm(ids)) {
+          score = `${score}, Scheme Completed!`;
+        } else {
+          score++;
+        }
         this.setState({ cards: cards });
         this.setState({ score: score });
       } else {
         this.setState({ cards: shuffleArray(cards) });
-        this.setState({ score: 0 });
+        // this.setState({ score: 0 });
       }
     }
   };

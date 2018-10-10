@@ -6,7 +6,7 @@ class ScoreCard extends Component {
   render() {
     return (
       <div className="score">
-        <h2>Score: {this.props.score}</h2>
+        <h2>Moves: {this.props.score}</h2>
       </div>
     );
   }
