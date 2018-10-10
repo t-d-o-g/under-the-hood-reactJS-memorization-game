@@ -66,7 +66,11 @@ class App extends Component {
       cards[fromIndex] = { id: fromCard.id, ...toRest };
       cards[toIndex] = { id: toCard.id, ...fromRest };
 
-      this.setState({ cards: cards });
+      if (fromCard.id === toIndex) {
+        this.setState({ cards: cards });
+      } else {
+        this.setState({ cards: shuffleArray(cards) });
+      }
     }
   };
 
@@ -84,6 +88,7 @@ class App extends Component {
             return <SchemeCard
               key={card.id}
               id={card.id}
+              index={card.index}
               name={card.name}
               image={card.image}
               draggable={true}

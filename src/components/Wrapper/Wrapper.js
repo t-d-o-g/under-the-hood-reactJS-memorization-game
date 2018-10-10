@@ -3,9 +3,10 @@ import './Wrapper.css';
 
 
 class Wrapper extends Component {
+
   render() {
     this.props.children.forEach((el) => {
-      console.log('Element id:', el.props.id);
+      console.log('id:', el.props.id);
     });
 
     return (
