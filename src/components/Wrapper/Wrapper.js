@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './Wrapper.css';
+// import ScoreCard from '../ScoreCard';
 
 
 class Wrapper extends Component {
-
   render() {
     this.props.children.forEach((el) => {
       console.log('id:', el.props.id);
@@ -13,11 +13,7 @@ class Wrapper extends Component {
       <div className="wrapper container">
         <div className="row py-3">
           <div className="col">{this.props.children[0]}</div>
-          <div className="col">
-            <div className="score">
-              <h2>Score: 0</h2>
-            </div>
-          </div>
+          {/* <div className="col"><ScoreCard></ScoreCard></div> */}
         </div>
         <div className="row py-3">
           <div className="col">{this.props.children[1]}</div>

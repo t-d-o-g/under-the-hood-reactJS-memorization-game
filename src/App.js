@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SchemeCard from './components/SchemeCard';
+import ScoreCard from './components/ScoreCard';
 import Wrapper from './components/Wrapper';
 import mountingScheme from './mounting-scheme.json';
 
@@ -21,7 +22,8 @@ function shuffleArray(arr) {
 
 class App extends Component {
   state = {
-    cards: shuffleArray(mountingScheme)
+    cards: shuffleArray(mountingScheme),
+    score: 0
   };
 
   handleDragStart = data => evt => {
@@ -47,6 +49,7 @@ class App extends Component {
 
   swapCards = (fromCard, toCard) => {
     let cards = this.state.cards.slice();
+    let score = this.state.score;
     let fromIndex = -1;
     let toIndex = -1;
 
@@ -67,9 +70,12 @@ class App extends Component {
       cards[toIndex] = { id: toCard.id, ...fromRest };
 
       if (fromCard.id === toIndex) {
+        score++;
         this.setState({ cards: cards });
+        this.setState({ score: score });
       } else {
         this.setState({ cards: shuffleArray(cards) });
+        this.setState({ score: 0 });
       }
     }
   };
@@ -83,6 +89,7 @@ class App extends Component {
             <h2>Memorization Game</h2>
           </div>
         </div>
+        <ScoreCard score={this.state.score}/>
         <Wrapper>
           {this.state.cards.map(card => {
             return <SchemeCard
