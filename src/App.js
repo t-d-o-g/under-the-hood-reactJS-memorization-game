@@ -117,6 +117,7 @@ class App extends Component {
         })
 
         if (checkOrderedArrElm(ids)) {
+          score++;
           score = `${score}, Scheme Completed!`;
         } else {
           score++;
