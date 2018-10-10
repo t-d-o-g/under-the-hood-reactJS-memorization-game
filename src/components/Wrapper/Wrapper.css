@@ -2,3 +2,12 @@
   border-radius: 5px;
   background:#6CADDC;
 }
+
+.score {
+  text-align: center;
+  background-color: #ccccff;
+  border-radius: 4px;
+  height: auto;
+  width: 350px;
+  box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+}

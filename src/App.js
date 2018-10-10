@@ -88,7 +88,6 @@ class App extends Component {
             return <SchemeCard
               key={card.id}
               id={card.id}
-              index={card.index}
               name={card.name}
               image={card.image}
               draggable={true}
